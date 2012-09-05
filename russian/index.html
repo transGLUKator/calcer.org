@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Простой финансовый калькулятор</title>
+    
+<!-- Mobile viewport optimized: h5bp.com/viewport -->
+	  <meta name="viewport" content="width=device-width">
+
+<!-- Main stylesheet imports bootstrap css and adds custom -->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <style>
+    	/* To keep short panes open decently tall */
+    	.tab-pane {min-height: 400px;}
+    </style>
+
+<!-- Modernizr for browser feature-checking 
+			+ HTML5shiv (included in modernizr) see modernizr.com -->
+  	
+
+<!-- Fav and touch icons -->
+		<!-- alternatively, remove these lines and place icons
+				directly in the site parent folder 
+				mathiasbynens.be/notes/touch-icons -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+    
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+
+  <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    		<div class="container">
+		    <div class="page-header">
+			    <h1>Что будем считать?</h1>
+		    </div>
+		    
+		    		<div class="row">
+							<div class="tabbable span12">
+								<ul class="nav nav-pills">
+									<li class="active"><a href="#tabs1-pane1" data-toggle="tab">PV</a></li>
+									<li><a href="#tabs1-pane2" data-toggle="tab">FV</a></li>
+                                    <li><a href="#tabs1-pane3" data-toggle="tab">PMT</a></li>
+									<li><a href="#tabs1-pane4" data-toggle="tab">NPV</a></li>
+									<li><a href="#tabs1-pane5" data-toggle="tab">IRR</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active row" id="tabs1-pane1">
+										<div id="pvForm" class="span5">
+    <form action="" name="Present Value">
+    
+    <p>Введите ставку процента - число от 0 до 100 без символа %</p>
+    <p><input name="Rate" type="text" id="r"></p>
+    <p>Введите кол-во периодов</p>
+    <p><input name="Number of periods" type="text" id="n"></p>
+    <p>Введите размер периодического платежа</p>
+    <p><input name="Payment" type="text" id="pmt"></p>
+    <p>Или будущую стоимость</p>
+    <p><input name="Future value" type="text" id="fv"></p>
+    <p><input type="button" value="Посчитать" class="btn btn-primary" onClick="calculatePv()">
+    <input name="Reset" class="btn btn-danger" type="reset" value="Очистить форму" calss="btn btn-primary"></p>
+    <p id="resultPv"></p>
+    </form>
+</div>
+
+<div class="span7" style="text-align:justify">
+<h3>Что это такое?</h3>
+<p>Приведенная (дисконтированная) стоимость (англ. Present Value, PV) - это стоимость будущих денежных потоков, выраженная в значении текущих денежных потоков. Понятие вытекает из простого явления изменения стоимости денег с течением времени. Очевидно, что 100 рублей сегодня - это совсем не то же самое, что 100 рублей через год. А благодаря функции приведенной стоимости мы можем выразить будущую стоимость в текущих единицах.</p>
+<h3>Для чего это надо?</h3>
+<p>Давайте рассмотрим такой пример.
+
+Мы покупаем автомобиль, и дилер соглашается предоставить нам рассрочку на три года. Каждый год мы должны ему платить по 10,000 долларов. Банковская ставка процента по вкладам в долларах составляет 5% годовых. Какова для нас на сегодняшний день приведенная стоимость будущих денежных платежей? Или другими словами сколько в сегодняшних долларах стоит наша новая машина?
+
+Ответить на это вопрос нам и поможет данный калькулятор.
+Ставка процента равна 5, периодический платеж - 10,000, а количество периодов - 3. Вводим все данные в соответствующие поля и получаем, что наша машина в сегодняшних ценах стоит примерно 27,232 доллара.
+</p>
+</div>
+									</div>
+									<div class="tab-pane row" id="tabs1-pane2">
+										<div id="fvForm" class="span5">
+    <form action="" name="Present Value">
+    
+    <p>Введите ставку процента - число от 0 до 100 без символа %</p>
+    <p><input name="Rate1" type="text" id="r1"></p>
+    <p>Введите кол-во периодов</p>
+    <p><input name="Number of periods1" type="text" id="n1"></p>
+    <p>Введите размер периодического платежа</p>
+    <p><input name="Payment1" type="text" id="pmt1"></p>
+    <p>Или приведенную стоимость</p>
+    <p><input name="Present value" type="text" id="pv"></p>
+    <p><input type="button" value="Посчитать" class="btn btn-primary" onClick="calculateFv()">
+    <input name="Reset" class="btn btn-danger" type="reset" value="Очистить форму" calss="btn btn-primary"></p>
+    <p id="resultFv"></p>
+    </form>
+</div>
+
+<div class="span7">
+<p>Информация скоро будет добавлена</p>
+</div>
+									</div>
+                                    <div class="tab-pane row" id="tabs1-pane3">
+										<div id="pmtForm" class="span5">
+    <form action="" name="Payment">
+    
+    <p>Введите ставку процента - число от 0 до 100 без символа %</p>
+    <p><input name="Rate1" type="text" id="r2"></p>
+    <p>Введите кол-во периодов</p>
+    <p><input name="Number of periods1" type="text" id="n2"></p>
+    <p>Введите приведенную стоимость (Ваш кредит)</p>
+    <p><input name="Present value" type="text" id="pv2"></p>
+    <p><input type="button" value="Посчитать" class="btn btn-primary" onClick="calculatePmt()">
+    <input name="Reset" class="btn btn-danger" type="reset" value="Очистить форму" calss="btn btn-primary"></p>
+    <p id="resultPmt2"></p>
+    </form>
+</div>
+
+<div class="span7">
+<p>Информация скоро будет добавлена</p>
+</div>
+									</div>
+									<div class="tab-pane row" id="tabs1-pane4">
+										<div id="npvForm" class="span5">
+
+    <form action="" name="Net Present Value">
+    <p>Введите ставку процента - число от 0 до 100 без символа %</p>
+   <p> <input name="Rate2" type="text" id="r2"></p>
+    <p>Введите размер начальной инвестиции</p>
+   <p> <input name="Present value" type="text" id="inv"></p>
+    
+    <p>Введите размер годового денежного потока</p>
+    <p>Год 1 <input name="Payment1" type="text" id="year1"> <input type="button" class="btn btn-primary" value="Добавить еще 1 год" onClick="addInput()">
+     <div id="yearNpv">
+    
+    </div>
+    </p>
+   
+        <p><input type="button" class="btn btn-primary" value="Посчитать" onClick="calculateNpv()">
+        <input name="Reset" class="btn btn-danger" type="reset" value="Очистить форму" calss="btn btn-primary"></p>
+    <p id="resultNpv"></p>
+    </form>
+</div>
+
+<div class="span7">
+<p>Информация скоро будет добавлена</p>
+</div>
+									</div>
+									<div class="tab-pane row" id="tabs1-pane5">
+										<div id="irrForm" class="span5">
+<form action="" name="irr">
+<p>Введите размер начальной инвестиции</p>
+<p><input type="text" id="invest"/></p>
+<p>Введите размер годового денежного потока </p>
+   <p> Год 1 <input name="Payment1" type="text" id="yearIrr1">
+     <input type="button" class="btn btn-primary" value="Добавить еще 1 год" onClick="addInputIrr()">    <br />
+     <div id="yearIrr">
+    
+    </div>
+    </p>
+
+<p><input type="button" class="btn btn-primary" onClick="calculateIrr()" value="Посчитать" />
+<input name="Reset" class="btn btn-danger" type="reset" value="Очистить форму" calss="btn btn-primary"></p>
+<p id="resultIrr"></p>
+</form>
+</div>
+<div class="span7">
+<p>Информация скоро будет добавлена</p>
+</div>
+									</div>
+								</div><!-- /.tab-content -->
+							</div><!-- /.tabbable -->
+						</div><!-- /.row -->
+
+      <hr>
+
+      <footer>
+<div class="fb-like" data-href="http://calsera.freeiz.com/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <div class="g-plusone" data-size="medium"></div>
+
+      	<p>Calsera версия 0.2 beta. Создано благодаря <a href="http://www.coursera.org">Coursera.org</a> и в частности профессору финансов Gautam Kaul.</p>
+        <p>Для обратной связи используйте этот адрес: <a href="mailto:sergeykhval@gmail.com">sergeykhval@gmail.com</a></p>
+      </footer>
+
+
+    </div> <!-- .container -->
+
+<!-- ==============================================
+		 JavaScript below! 															-->
+         <script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+         <script src="js/modernizr-2.5.3.min.js"></script>
+           <script type="text/javascript" src="pv.js"></script>
+<script type="text/javascript" src="irr.js"></script>
+
+<!-- jQuery via Google + local fallback, see h5bp.com -->
+	  <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+
+<!-- Bootstrap JS: compiled and minified -->
+    <script src="js/bootstrap.min.js"></script>
+
+<!-- Example plugin: Prettify -->
+    <script src="js/prettify/prettify.js"></script>
+    
+<!-- Initialize Scripts -->
+		<script>
+			// Activate Google Prettify in this page
+			addEventListener('load', prettyPrint, false);
+		
+			$(document).ready(function(){
+
+				// Add prettyprint class to pre elements
+					$('pre').addClass('prettyprint');
+								
+			}); // end document.ready
+		</script>
+
+  </body>
+</html>
